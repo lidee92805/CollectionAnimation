@@ -19,7 +19,7 @@
     
     _layout = [[LLCollectionViewFlowLayout alloc] init];
     _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 44);
-    
+        
     UICollectionView * collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:_layout];
     collectionView.delegate = self;
     collectionView.dataSource = self;

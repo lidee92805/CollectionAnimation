@@ -15,7 +15,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         self.preferredContentSize = CGSize(width: screenWidth, height: 224);
-        var dataList = NSMutableArray();
+        
         var dataTask = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://mapi.damai.cn/proj/HotProj.aspx")!, completionHandler: { (data, response, error) -> Void in
             var dataDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary;
             var dataArray = dataDictionary["list"] as! NSArray;
@@ -43,6 +43,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     }
                 }
         });
+        //TODO:添加缓存
+        dataTask.priority = NSURLSessionTaskPriorityDefault;
         dataTask.resume();
     }
 //    func createViewWithModel(model:Model) -> UIView? {
